@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNACKBAR</title>
+    
+    <script type="module" crossorigin src="/test-hw-10/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/test-hw-10/assets/styles-e969fe97.js">
+    <link rel="modulepreload" crossorigin href="/test-hw-10/assets/vendor-77e16229.js">
+    <link rel="stylesheet" href="/test-hw-10/assets/styles-c0ca2b06.css">
+    <link rel="stylesheet" href="/test-hw-10/assets/vendor-7a007824.css">
+  </head>
+  <body>
+    <section>
+      <a href="./index.html">Go to home</a>
+      <h1>Welcome to snackbar</h1>
+    </section>
+
+    <form class="form">
+  <label class ="time">
+    Delay (ms)
+    <input type="number" name="delay" required />
+  </label>
+
+  <fieldset>
+    <legend>State</legend>
+    <label>
+      <input type="radio" name="state" value="fulfilled" required />
+      Fulfilled
+    </label>
+    <label>
+      <input type="radio" name="state" value="rejected" required />
+      Rejected
+    </label>
+  </fieldset>
+
+  <button type="submit">Create notification</button>
+</form>
+
+
+  </body>
+</html>
