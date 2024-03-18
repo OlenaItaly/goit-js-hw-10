@@ -1,0 +1,38 @@
+section {
+    margin-bottom: 50px;
+}
+.box {
+    display: flex-box;
+    margin-left: 50px;
+    gap: 20px;
+}
+.field {
+   display: inline-block;
+   margin-right: 20px;
+   /* margin-left: 10px; */
+   /* background-color: aqua; */
+   text-align: center;
+}
+
+.value{
+display: flex;
+font-size: 48px;
+font-weight:400;
+line-height: 32px;
+letter-spacing: 0.04em;
+text-align: left;
+justify-content: center;
+}
+
+.calendar {
+margin-bottom: 20px;
+}
+
+.label {
+justify-content: center;
+}
+.start {
+    width: 100px;
+
+    font-size: 24px;
+}
