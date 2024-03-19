@@ -1,12 +1,4 @@
-// // Описаний в документації
-// import flatpickr from "flatpickr";
-// // Додатковий імпорт стилів
-// import "flatpickr/dist/flatpickr.min.css";
 
-// // Описаний у документації
-// import iziToast from "izitoast";
-// // Додатковий імпорт стилів
-// import "izitoast/dist/css/iziToast.min.css";
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
@@ -32,6 +24,7 @@ const options = {
         position: 'topRight',
         message: `Please choose a date in the future`
       });
+       startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
       inputTime.disabled = true;
@@ -72,7 +65,7 @@ console.log(showTime);
 startBtn.disabled = true;
 
 startBtn.addEventListener('click', event => {
-  const repeatTime = setInterval(() => {
+  const intervalId = setInterval(() => {
     timeInterval = userSelectedDate - new Date();
     event.preventDefault();
     inputTime.disabled = true;
@@ -80,38 +73,19 @@ startBtn.addEventListener('click', event => {
     if (timeInterval < 1) {
       startBtn.disabled = true;
       inputTime.disabled = false;
-      clearInterval(repeatTime);
+      clearInterval(intervalId);
       return;
     }
 
     const timer = convertMs(timeInterval);
+    console.log(event.currentTarget);
 
-    showTime[0].innerText = timer.days.toString().padStart(2, '0');
-    showTime[1].innerText = timer.hours.toString().padStart(2, '0');
-    showTime[2].innerText = timer.minutes.toString().padStart(2, '0');
-    showTime[3].innerText = timer.seconds.toString().padStart(2, '0');
-  }, 1000);
+    showTime[0].textContent = timer.days.toString().padStart(2, '0');
+    showTime[1].textContent= timer.hours.toString().padStart(2, '0');
+    showTime[2].textContent = timer.minutes.toString().padStart(2, '0');
+    showTime[3].textContent = timer.seconds.toString().padStart(2, '0');
+      }, 1000);
 });
 
 
-//===============================================
-// const inputData = document.querySelector('#datetime-picker');
-// const calendar = flatpickr('#datetime-picker', options);
-// // const startBtn = document.querySelector('[data-start]');
-// // const inputData = document.querySelector('#datetime-picker');
-// const startBtn = document.querySelector('button');
-// const showTime = document.querySelectorAll('.value');
-// console.log(showTime);
-// // let userSelectedDate;
-// // let intervalId = null;
-// startBtn.addEventListener('click', () => {
-//     const initTime = Date.now();
-//     const intervalId = setInterval(() => {
-//         const currentTime = Date.now();
-//         const diff = currentTime - initTime;
-//    console.log(diff); 
-// },1000)
-// })
-
-//===========================================================
 

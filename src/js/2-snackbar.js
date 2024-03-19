@@ -9,45 +9,29 @@ formEl.addEventListener('submit', (event) => {
     event.preventDefault();
     const delay = event.currentTarget.elements.delay.value;
     const btnRadio = event.currentTarget.elements.state.value;
-
-  
     const promise = new Promise((resolve, reject) => {
-        
+        setTimeout(() => {
             if (btnRadio === 'fulfilled') {
- 
-            
-                resolve()
-               
+                resolve(delay);
             } else {
- 
-                reject()
-               
+                reject(delay);
             }
-          formEl.reset();
-    })
+            formEl.reset();
+        }, delay);
+    });
     promise
-        .then(value => {
-            setTimeout(() => {
-                 iziToast.success({
+        .then(delay => {
+            iziToast.success({
                 color: 'green',
                 position: "topRight",
-                message: `✅ Fulfilled promise in ${delay}ms`
-            })
-            
-        },delay)
-           
-            //  formEl.reset();
+                message: `:white_check_mark: Fulfilled promise in ${delay}ms`
+            });
         })
-        .catch(error => {
-            setTimeout(() => {
-                iziToast.error({
+        .catch(delay => {
+            iziToast.error({
                 color: 'red',
                 position: "topRight",
-                message: `❌ Rejected promise in ${delay}ms`
-            })
-            
-            }, delay);
-            
-        
+                message: `:x: Rejected promise in ${delay}ms`
+            });
         });
-})
+});
