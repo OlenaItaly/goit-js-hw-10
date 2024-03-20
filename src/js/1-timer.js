@@ -47,19 +47,18 @@ function convertMs(ms) {
 
 startBtn.disabled = true;
 
-const calendar = flatpickr("#datetime-picker", options);
+flatpickr("#datetime-picker", options);
 
 startBtn.disabled = false;
 
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
       event.preventDefault();
-    timeInterval = userSelectedDate - new Date();
-   console.log(timeInterval);
-    inputTime.disabled = true;
+    timeInterval = userSelectedDat
+    // inputTime.disabled = true;
 
     if (timeInterval < 1) {
-      
+
       iziToast.error({
         position: 'topCenter',
         message: `Please choose a date in the future`
@@ -77,7 +76,8 @@ startBtn.addEventListener('click', event => {
     showTime[1].textContent= timer.hours.toString().padStart(2, '0');
     showTime[2].textContent = timer.minutes.toString().padStart(2, '0');
     showTime[3].textContent = timer.seconds.toString().padStart(2, '0');
-      }, 1000);
+  }, 1000);
+  
 });
 
 
