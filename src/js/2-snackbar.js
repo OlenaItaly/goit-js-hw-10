@@ -37,5 +37,4 @@ formEl.addEventListener('submit', (event) => {
              formEl.reset();
         }, delay);
     });
-    
 });
