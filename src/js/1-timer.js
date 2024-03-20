@@ -9,7 +9,7 @@ let userSelectedDate;
 let timeInterval;
 
 
-const inputTime = document.querySelector('#datetime-picker');
+
 const startBtn = document.querySelector('button');
 const showTime = document.querySelectorAll('.value');
 
@@ -46,7 +46,7 @@ function convertMs(ms) {
 }
 
 startBtn.disabled = true;
-
+const inputTime = document.querySelector("#datetime-picker");
 flatpickr("#datetime-picker", options);
 
 startBtn.disabled = false;
@@ -54,7 +54,8 @@ startBtn.disabled = false;
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
       event.preventDefault();
-    timeInterval = userSelectedDat
+    timeInterval = userSelectedDate - new Date();
+  //  console.log(timeInterval);
     // inputTime.disabled = true;
 
     if (timeInterval < 1) {
@@ -68,7 +69,8 @@ startBtn.addEventListener('click', event => {
       clearInterval(intervalId);
       return;
     }
-
+    startBtn.disabled = true;
+    inputTime.disabled = true;
     const timer = convertMs(timeInterval);
     
 
