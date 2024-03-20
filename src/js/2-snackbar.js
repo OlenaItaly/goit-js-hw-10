@@ -1,4 +1,6 @@
 
+
+
 import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
@@ -9,32 +11,31 @@ formEl.addEventListener('submit', (event) => {
     event.preventDefault();
     const delay = event.currentTarget.elements.delay.value;
     const btnRadio = event.currentTarget.elements.state.value;
+    
     const promise = new Promise((resolve, reject) => {
-        setTimeout(() => {
+        setTimeout(() => { //ТУТ
             if (btnRadio === 'fulfilled') {
                 resolve(delay);
             } else {
                 reject(delay);
             }
-
-             promise
+            // formEl.reset();
+        }, delay);
+    });
+    promise
         .then(delay => {
-            iziToast.success({
-                color: 'green',
-                position: "topRight",
+            iziToast.success({         
+                position: "topCenter",
                 message: `✅ Fulfilled promise in ${delay}ms`
-
             });
         })
         .catch(delay => {
             iziToast.error({
-                color: 'red',
-                position: "topRight",
+                position: "topCenter",
                 message: `❌ Rejected promise in ${delay}ms`
-
             });
         });
-             formEl.reset();
-        }, delay);
-    });
+    
+    formEl.reset();
+    
 });
