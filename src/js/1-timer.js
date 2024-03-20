@@ -8,29 +8,22 @@ import 'izitoast/dist/css/iziToast.min.css';
 let userSelectedDate;
 let timeInterval;
 
+
+const inputTime = document.querySelector('#datetime-picker');
+const startBtn = document.querySelector('button');
+const showTime = document.querySelectorAll('.value');
+
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    // console.log(selectedDates[0]);
     userSelectedDate = selectedDates[0];
-    timeInterval = userSelectedDate - options.defaultDate;
-
-    if (timeInterval < 1) {
-      iziToast.error({
-        color: 'red',
-        position: 'topRight',
-        message: `Please choose a date in the future`
-      });
-       startBtn.disabled = true;
-    } else {
-      startBtn.disabled = false;
-      inputTime.disabled = true;
-    }
+    console.log(userSelectedDate);
   },
 };
+
 //==============================================
 
 function convertMs(ms) {
@@ -52,33 +45,33 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-
-
-const calendar = flatpickr('#datepicker', options);
-const inputTime = document.querySelector('#datepicker');
-const startBtn = document.querySelector('button');
-const showTime = document.querySelectorAll('.value');
-
-
-console.log(showTime);
-
 startBtn.disabled = true;
+
+const calendar = flatpickr("#datetime-picker", options);
+
+startBtn.disabled = false;
 
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
+      event.preventDefault();
     timeInterval = userSelectedDate - new Date();
-    event.preventDefault();
+   console.log(timeInterval);
     inputTime.disabled = true;
 
     if (timeInterval < 1) {
-      startBtn.disabled = true;
-      inputTime.disabled = false;
+      
+      iziToast.error({
+        position: 'topCenter',
+        message: `Please choose a date in the future`
+      });
+
+    
       clearInterval(intervalId);
       return;
     }
 
     const timer = convertMs(timeInterval);
-    console.log(event.currentTarget);
+    
 
     showTime[0].textContent = timer.days.toString().padStart(2, '0');
     showTime[1].textContent= timer.hours.toString().padStart(2, '0');

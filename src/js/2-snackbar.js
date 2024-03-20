@@ -16,22 +16,26 @@ formEl.addEventListener('submit', (event) => {
             } else {
                 reject(delay);
             }
-            formEl.reset();
-        }, delay);
-    });
-    promise
+
+             promise
         .then(delay => {
             iziToast.success({
                 color: 'green',
                 position: "topRight",
-                message: `:white_check_mark: Fulfilled promise in ${delay}ms`
+                message: `✅ Fulfilled promise in ${delay}ms`
+
             });
         })
         .catch(delay => {
             iziToast.error({
                 color: 'red',
                 position: "topRight",
-                message: `:x: Rejected promise in ${delay}ms`
+                message: `❌ Rejected promise in ${delay}ms`
+
             });
         });
+             formEl.reset();
+        }, delay);
+    });
+    
 });
