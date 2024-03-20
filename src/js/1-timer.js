@@ -20,7 +20,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-    console.log(userSelectedDate);
+   
   },
 };
 
@@ -55,9 +55,7 @@ startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
       event.preventDefault();
     timeInterval = userSelectedDate - new Date();
-  //  console.log(timeInterval);
-    // inputTime.disabled = true;
-
+  
     if (timeInterval < 1) {
 
       iziToast.error({
