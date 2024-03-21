@@ -10,6 +10,8 @@ let userSelectedDate;
 
 const startBtn = document.querySelector('button');
 const showTime = document.querySelectorAll('.value');
+const inputTime = document.querySelector("#datetime-picker");
+
 
 const options = {
   enableTime: true,
@@ -55,10 +57,10 @@ function convertMs(ms) {
 }
 
 startBtn.disabled = true;
-const inputTime = document.querySelector("#datetime-picker");
+
 flatpickr("#datetime-picker", options);
 
-startBtn.disabled = false;
+// startBtn.disabled = false;
 
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
