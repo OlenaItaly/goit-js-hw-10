@@ -6,8 +6,6 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate;
-// let timeInterval;
-
 
 
 const startBtn = document.querySelector('button');
@@ -29,7 +27,8 @@ const options = {
       startBtn.disabled = true; 
     } else {
       startBtn.disabled = false;
-      inputTime.disabled = true;
+      inputTime.disabled = true; 
+      
     }
   },
 };
@@ -63,7 +62,7 @@ startBtn.disabled = false;
 
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
-      event.preventDefault();
+     
     let timeInterval = userSelectedDate - new Date();
   
     if (timeInterval < 1) {
@@ -73,6 +72,8 @@ startBtn.addEventListener('click', event => {
     }
     startBtn.disabled = true;
     inputTime.disabled = true;
+    //ДЗ ! Після запуску таймера натисканням кнопки Старт кнопка Старт і інпут стають неактивним, щоб користувач не міг обрати нову дату, поки йде відлік часу. Якщо таймер запущений, для того щоб вибрати нову дату і перезапустити його — необхідно перезавантажити сторінку. 
+
     const timer = convertMs(timeInterval);
     
 
