@@ -6,7 +6,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate;
-let timeInterval;
+// let timeInterval;
 
 
 
@@ -20,8 +20,8 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-   timeInterval = userSelectedDate - options.defaultDate;
-    if (timeInterval < 1) {
+   const timeValid = userSelectedDate - options.defaultDate;
+    if (timeValid < 1) {
       iziToast.error({ 
         position: 'topCenter',
         message: `Please choose a date in the future`
@@ -64,7 +64,7 @@ startBtn.disabled = false;
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
       event.preventDefault();
-    timeInterval = userSelectedDate - new Date();
+    let timeInterval = userSelectedDate - new Date();
   
     if (timeInterval < 1) {
 
