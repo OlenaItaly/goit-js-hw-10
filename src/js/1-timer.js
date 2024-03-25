@@ -20,7 +20,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-   const timeValid = userSelectedDate - options.defaultDate;
+   const timeValid = userSelectedDate - new Date();
     if (timeValid < 1) {
       iziToast.error({ 
         position: 'topCenter',
@@ -29,7 +29,7 @@ const options = {
       startBtn.disabled = true; 
     } else {
       startBtn.disabled = false;
-      inputTime.disabled = true; 
+      
       
     }
   },
@@ -54,13 +54,14 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
+
 }
 
 startBtn.disabled = true;
 
 flatpickr("#datetime-picker", options);
 
-// startBtn.disabled = false;
+
 
 startBtn.addEventListener('click', event => {
   const intervalId = setInterval(() => {
@@ -74,7 +75,7 @@ startBtn.addEventListener('click', event => {
     }
     startBtn.disabled = true;
     inputTime.disabled = true;
-    //ДЗ ! Після запуску таймера натисканням кнопки Старт кнопка Старт і інпут стають неактивним, щоб користувач не міг обрати нову дату, поки йде відлік часу. Якщо таймер запущений, для того щоб вибрати нову дату і перезапустити його — необхідно перезавантажити сторінку. 
+
 
     const timer = convertMs(timeInterval);
     
